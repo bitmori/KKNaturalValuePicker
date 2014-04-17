@@ -1,5 +1,5 @@
 //
-//  KKViewController.h
+//  KKHorizontalPickerViewController.h
 //  NaturalValuePicker
 //
 //  Created by Ke Yang on 4/17/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKViewController : UIViewController
+@interface KKHorizontalPickerViewController : UIViewController
 
 @end

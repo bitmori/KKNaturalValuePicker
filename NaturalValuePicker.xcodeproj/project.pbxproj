@@ -14,13 +14,15 @@
 		4ABB99271900337000688C08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB99261900337000688C08 /* main.m */; };
 		4ABB992B1900337000688C08 /* KKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB992A1900337000688C08 /* KKAppDelegate.m */; };
 		4ABB992E1900337000688C08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ABB992C1900337000688C08 /* Main.storyboard */; };
-		4ABB99311900337000688C08 /* KKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB99301900337000688C08 /* KKViewController.m */; };
+		4ABB99311900337000688C08 /* KKVerticalPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB99301900337000688C08 /* KKVerticalPickerViewController.m */; };
 		4ABB99331900337000688C08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ABB99321900337000688C08 /* Images.xcassets */; };
 		4ABB993A1900337100688C08 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB99391900337100688C08 /* XCTest.framework */; };
 		4ABB993B1900337100688C08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB991A1900337000688C08 /* Foundation.framework */; };
 		4ABB993C1900337100688C08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB991E1900337000688C08 /* UIKit.framework */; };
 		4ABB99441900337100688C08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ABB99421900337100688C08 /* InfoPlist.strings */; };
 		4ABB99461900337100688C08 /* NaturalValuePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB99451900337100688C08 /* NaturalValuePickerTests.m */; };
+		4ABB99511900338D00688C08 /* KKNaturalValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB994F1900338D00688C08 /* KKNaturalValuePicker.m */; };
+		4ABB9954190050A300688C08 /* KKHorizontalPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9953190050A300688C08 /* KKHorizontalPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +47,18 @@
 		4ABB99291900337000688C08 /* KKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKAppDelegate.h; sourceTree = "<group>"; };
 		4ABB992A1900337000688C08 /* KKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKAppDelegate.m; sourceTree = "<group>"; };
 		4ABB992D1900337000688C08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4ABB992F1900337000688C08 /* KKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKViewController.h; sourceTree = "<group>"; };
-		4ABB99301900337000688C08 /* KKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKViewController.m; sourceTree = "<group>"; };
+		4ABB992F1900337000688C08 /* KKVerticalPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKVerticalPickerViewController.h; sourceTree = "<group>"; };
+		4ABB99301900337000688C08 /* KKVerticalPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKVerticalPickerViewController.m; sourceTree = "<group>"; };
 		4ABB99321900337000688C08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4ABB99381900337100688C08 /* NaturalValuePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaturalValuePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABB99391900337100688C08 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4ABB99411900337100688C08 /* NaturalValuePickerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NaturalValuePickerTests-Info.plist"; sourceTree = "<group>"; };
 		4ABB99431900337100688C08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4ABB99451900337100688C08 /* NaturalValuePickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaturalValuePickerTests.m; sourceTree = "<group>"; };
+		4ABB994F1900338D00688C08 /* KKNaturalValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNaturalValuePicker.m; sourceTree = "<group>"; };
+		4ABB99501900338D00688C08 /* KKNaturalValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNaturalValuePicker.h; sourceTree = "<group>"; };
+		4ABB9952190050A300688C08 /* KKHorizontalPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKHorizontalPickerViewController.h; sourceTree = "<group>"; };
+		4ABB9953190050A300688C08 /* KKHorizontalPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKHorizontalPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +118,15 @@
 		4ABB99201900337000688C08 /* NaturalValuePicker */ = {
 			isa = PBXGroup;
 			children = (
+				4ABB99501900338D00688C08 /* KKNaturalValuePicker.h */,
+				4ABB994F1900338D00688C08 /* KKNaturalValuePicker.m */,
 				4ABB99291900337000688C08 /* KKAppDelegate.h */,
 				4ABB992A1900337000688C08 /* KKAppDelegate.m */,
 				4ABB992C1900337000688C08 /* Main.storyboard */,
-				4ABB992F1900337000688C08 /* KKViewController.h */,
-				4ABB99301900337000688C08 /* KKViewController.m */,
+				4ABB992F1900337000688C08 /* KKVerticalPickerViewController.h */,
+				4ABB99301900337000688C08 /* KKVerticalPickerViewController.m */,
+				4ABB9952190050A300688C08 /* KKHorizontalPickerViewController.h */,
+				4ABB9953190050A300688C08 /* KKHorizontalPickerViewController.m */,
 				4ABB99321900337000688C08 /* Images.xcassets */,
 				4ABB99211900337000688C08 /* Supporting Files */,
 			);
@@ -250,9 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ABB99311900337000688C08 /* KKViewController.m in Sources */,
+				4ABB99311900337000688C08 /* KKVerticalPickerViewController.m in Sources */,
+				4ABB99511900338D00688C08 /* KKNaturalValuePicker.m in Sources */,
 				4ABB992B1900337000688C08 /* KKAppDelegate.m in Sources */,
 				4ABB99271900337000688C08 /* main.m in Sources */,
+				4ABB9954190050A300688C08 /* KKHorizontalPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
