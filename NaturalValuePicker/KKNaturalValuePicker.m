@@ -16,7 +16,7 @@
     UITableView *m_contentTableView;
     CGRect m_selectionRect;
     NSIndexPath *m_selectedIndexPath;
-
+    
     BOOL m_is_scrolling;
     NSInteger m_rowCount;
 }
@@ -103,7 +103,7 @@
 
 - (void)createContentTableView {
     m_selectionRect = [self.datasource rectForSelectionInPicker:self];
-
+    
     if (self.isHorizontalScrolling) {
         //In this case user might have created a view larger than taller
         m_contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.height, self.bounds.size.width)];
@@ -123,14 +123,14 @@
     
     
     // Initialization code
-//    CGFloat OffsetCreated;
+    //    CGFloat OffsetCreated;
     
     //If this is an horizontal scrolling we have to rotate the table view
     if (self.isHorizontalScrolling) {
         CGAffineTransform rotateTable = CGAffineTransformMakeRotation(-M_PI_2);
         m_contentTableView.transform = rotateTable;
         
-//        OffsetCreated = _contentTableView.frame.origin.x;
+        //        OffsetCreated = _contentTableView.frame.origin.x;
         m_contentTableView.frame = self.bounds;
     }
     
@@ -183,68 +183,41 @@
     NSArray *contentSubviews = [cell.contentView subviews];
     //We the content view already has a subview we just replace it, no need to add it again
     //hopefully ARC will do the rest and release the old retained view
+    
+    NSUInteger idx = indexPath.row;
+    BOOL selected = (idx == m_selectedIndexPath.row);
+    BOOL isBigGrid = (idx % self.bigScale) == 0;
+    BOOL isMidGrid = (idx % self.midScale) == 0;
+    
+    KKNaturalValuePickerGridType gridType;
+    if (isBigGrid) {
+        gridType = KKNaturalValuePickerGridTypeLarge;
+    } else if (isMidGrid) {
+        gridType = KKNaturalValuePickerGridTypeMiddle;
+    } else {
+        gridType = KKNaturalValuePickerGridTypeSmall;
+    }
+    
+    UIView *viewToAdd = nil;
+    if ([self.delegate respondsToSelector:@selector(prepareViewForRowAtIndex:IsSelected:WithGridType:ForPicker:)]) {
+        viewToAdd = [self.delegate prepareViewForRowAtIndex:idx IsSelected:selected WithGridType:gridType ForPicker:self];
+    } else {
+        viewToAdd = [self.delegate prepareViewForRowAtIndex:idx IsSelected:NO WithGridType:gridType ForPicker:self];
+    }
+    
+    //This is a new cell so we just have to add the view
+    if (self.isDebugEnabled) {
+        viewToAdd.layer.borderWidth = 1.0;
+        viewToAdd.layer.borderColor = [UIColor redColor].CGColor;
+    }
+    
     if ([contentSubviews count] >0 ) {
         UIView *contentSubV = [contentSubviews objectAtIndex:0];
-        
         //This will release the previous contentSubV
         [contentSubV removeFromSuperview];
-        NSUInteger idx = indexPath.row;
-        BOOL selected = (idx == m_selectedIndexPath.row);
-        BOOL isBigGrid = (idx % self.bigScale) == 0;
-        BOOL isMidGrid = (idx % self.midScale) == 0;
-        
-        KKNaturalValuePickerGridType gridType;
-        if (isBigGrid) {
-            gridType = KKNaturalValuePickerGridTypeLarge;
-        } else if (isMidGrid) {
-            gridType = KKNaturalValuePickerGridTypeMiddle;
-        } else {
-            gridType = KKNaturalValuePickerGridTypeSmall;
-        }
-        
-        UIView *viewToAdd = nil;
-        if ([self.delegate respondsToSelector:@selector(prepareViewForRowAtIndex:IsSelected:WithGridType:ForPicker:)]) {
-            viewToAdd = [self.delegate prepareViewForRowAtIndex:idx IsSelected:selected WithGridType:gridType ForPicker:self];
-        } else {
-            viewToAdd = [self.delegate prepareViewForRowAtIndex:idx IsSelected:NO WithGridType:gridType ForPicker:self];
-        }
-
         contentSubV = viewToAdd;
-        
-        if (self.isDebugEnabled) {
-            viewToAdd.layer.borderWidth = 1.0;
-            viewToAdd.layer.borderColor = [UIColor redColor].CGColor;
-        }
-        
         [cell.contentView addSubview:contentSubV];
-    }
-    else {
-        NSUInteger idx = indexPath.row;
-        BOOL selected = (idx == m_selectedIndexPath.row);
-        BOOL isBigGrid = (idx % self.bigScale) == 0;
-        BOOL isMidGrid = (idx % self.midScale) == 0;
-        
-        KKNaturalValuePickerGridType gridType;
-        if (isBigGrid) {
-            gridType = KKNaturalValuePickerGridTypeLarge;
-        } else if (isMidGrid) {
-            gridType = KKNaturalValuePickerGridTypeMiddle;
-        } else {
-            gridType = KKNaturalValuePickerGridTypeSmall;
-        }
-        
-        UIView *viewToAdd = nil;
-        if ([self.delegate respondsToSelector:@selector(prepareViewForRowAtIndex:IsSelected:WithGridType:ForPicker:)]) {
-            viewToAdd = [self.delegate prepareViewForRowAtIndex:idx IsSelected:selected WithGridType:gridType ForPicker:self];
-        } else {
-            viewToAdd = [self.delegate prepareViewForRowAtIndex:idx IsSelected:NO WithGridType:gridType ForPicker:self];
-        }
-
-        //This is a new cell so we just have to add the view
-        if (self.isDebugEnabled) {
-            viewToAdd.layer.borderWidth = 1.0;
-            viewToAdd.layer.borderColor = [UIColor redColor].CGColor;
-        }
+    } else {
         [cell.contentView addSubview:viewToAdd];
     }
     
@@ -317,7 +290,7 @@
     NSArray *indexPathArray = [m_contentTableView indexPathsForRowsInRect:selectionRectConverted];
     
     __block CGFloat intersectionHeight = 0.0;
-
+    
     [indexPathArray enumerateObjectsUsingBlock:^(NSIndexPath* index, NSUInteger it, BOOL *stop) {
         //looping through the closest cells to get the closest one
         // fast enumeration
